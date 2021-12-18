@@ -3,6 +3,7 @@ import sqlite3
 from flask import Flask, json, render_template, request, url_for, redirect, flash
 from flask import g
 import logging
+from logging.config import dictConfig
 
 
 # Function to get a database connection.
@@ -116,6 +117,21 @@ def metrics():
 # start the application on port 3111
 if __name__ == "__main__":
     # Enable logging
-    logging.basicConfig(filename='app.log', level=logging.DEBUG,
-                        format='%(asctime)s %(levelname)s %(name)s : %(message)s')
+    # logging.basicConfig(filename='app.log', level=logging.DEBUG,
+    #                     format='%(asctime)s %(levelname)s %(name)s : %(message)s')
+    dictConfig({
+        'version': 1,
+        'formatters': {'default': {
+            'format': '[%(asctime)s] %(levelname)s in %(module)s: %(message)s',
+        }},
+        'handlers': {'wsgi': {
+            'class': 'logging.StreamHandler',
+            'stream': 'ext://sys.stdout',
+            'formatter': 'default'
+        }},
+        'root': {
+            'level': 'DEBUG',
+            'handlers': ['wsgi']
+        }
+    })
     app.run(host='0.0.0.0', port='3111')
