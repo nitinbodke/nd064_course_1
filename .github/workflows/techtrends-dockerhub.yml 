@@ -3,10 +3,7 @@ name: Build n Push Image
 
 ## Set the trigger policy.
 ## In this case, the workflow is execute on a `push` event,
-on:
-  push:
-    branches:
-      - 'main'
+on: [push]
 
 ## List the steps to be executed by the workflow
 jobs:
