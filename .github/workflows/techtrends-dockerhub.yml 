@@ -6,7 +6,7 @@ name: Build n Push Image
 on:
   push:
     branches:
-      - 'master'
+      - 'main'
 
 ## List the steps to be executed by the workflow
 jobs:
