@@ -36,6 +36,6 @@ jobs:
         name: Build and push
         uses: docker/build-push-action@v2
         with:
-          context: github.com/nitinbodke/nd064_course_1/tree/main/project/techtrends
+          context: project/techtrends
           push: true
           tags: nitinbodke/techtrends:latest
